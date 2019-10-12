@@ -114,9 +114,11 @@ class MarkovChain:
 
 
     def _getRhyme(self, w):
-        rhymes_list = random.shuffle(getRhymes(w))
+        rhymes_list = getRhymes(w)
+        random.shuffle(rhymes_list)
+        print(type(rhymes_list))
         for word in rhymes_list:
-            if word in self.P1 and word in self.P2["."]:
+            if word in self.P1:# and word in self.P2["."]:
                 return word
 
         return "---- NULL ----"
