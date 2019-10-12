@@ -8,14 +8,15 @@ ERROR_NO_TEXT = 'Submmit a text, pls.'
 GEN = MarkovChain("saves/save.txt")
 
 def start(bot, update, user_data):
-    reply_text = '''Try /help and start generating cool poems.'''
+    reply_text = '''Try /help and start generating poems.'''
     bot.send_message(chat_id=update.message.chat_id, text=reply_text)
 
 
 def help(bot, update):
     reply_text = '''
-Only 1 command:
-/poem - Ez pz you know what to do.
+Only two commands available:
+/help - help?
+/poem - type a sentence and let me do my job
 '''
     bot.send_message(chat_id=update.message.chat_id, text=reply_text)
 
