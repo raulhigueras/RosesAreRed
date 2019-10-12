@@ -1,4 +1,5 @@
 import random
+from rhymer import getRhymes
 
 class MarkovChain:
     def __init__(self, savedP = None):
@@ -93,18 +94,30 @@ class MarkovChain:
 
 
     def train(self, text):
-        text = text.split(" ")
+        #text = text.split(" ")
+
+        text = open(text, "r").read().split(" ")
+
         self._computeP1(text)
         self._computeP2(text)
         self._computeP3(text)
 
-        self._debug(self.P1)
-
         self.trained = True
 
-    def generateText(self, n, w0):
+
+    def _getRhyme(self, w):
+        rhymes_list = getRhymes(w)
+        for word in rhymes_list:
+            if word in self.P1: #and word in self.P2["."]:
+                return word
+
+        return "---- NULL ----"
+
+    def generateText(self, n, w):
         assert(n > 3)
         assert(self.trained)
+
+        w0 = self._getRhyme(w)
 
         w1, w2 = self._getFirstWords(w0)
         sentence = [w2, w1, w0]
@@ -114,4 +127,4 @@ class MarkovChain:
             w3 = self._getNextWord(sentence[0], sentence[1], sentence[2])
             sentence.insert(0, w3)
 
-        return sentence.join(" ")
+        return " ".join(sentence)
