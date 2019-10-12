@@ -101,7 +101,6 @@ class MarkovChain:
 
     def train(self, file):
         text = ArrangedText(file).getList();
-        print(text)
 
         self._computeP1(text)
         self._computeP2(text)
