@@ -83,16 +83,12 @@ class MarkovChain:
         self.P3 = P
 
 
-    def _getFirstWords(self, w0):
-        k = list(self.P1[w0].keys())
-        v = list(self.P1[w0].values())
-        w1 = random.choices(k, weights = v, k = 1)[0]
-
-        k = list(self.P2[w0][w1].keys())
-        v = list(self.P2[w0][w1].values())
+    def _getFirstWord(self, w1):
+        k = list(self.P2["."][w1].keys())
+        v = list(self.P2["."][w1].values())
         w2 = random.choices(k, weights = v, k = 1)[0]
 
-        return w1, w2
+        return w2
 
 
     def _getNextWord(self, w2, w1, w0):
@@ -105,6 +101,7 @@ class MarkovChain:
 
     def train(self, file):
         text = ArrangedText(file).getList();
+        print(text)
 
         self._computeP1(text)
         self._computeP2(text)
@@ -114,19 +111,19 @@ class MarkovChain:
 
 
     def _getRhyme(self, w):
-        rhymes_list = getRhymes(w)
+        rhymes_list = getRhymes(w)[0:5]
         random.shuffle(rhymes_list)
-        print(type(rhymes_list))
         for word in rhymes_list:
-            if word in self.P1:# and word in self.P2["."]:
+            print(word)
+            if word in self.P1 and word in self.P2["."].keys():
                 return word
 
         return "---- NULL ----"
 
     def generateText(self, n, w):
-        w0 = self._getRhyme(w)
-
-        w1, w2 = self._getFirstWords(w0)
+        w0 = "."
+        w1 = self._getRhyme(w)
+        w2 = self._getFirstWord(w1)
         sentence = [w2, w1, w0]
 
         for i in range(n-3):
