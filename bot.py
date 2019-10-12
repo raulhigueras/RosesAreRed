@@ -5,8 +5,7 @@ from AI import MarkovChain
 ERROR_MESSAGE = 'Unexpected error.'
 ERROR_NO_TEXT = 'Submmit a text, pls.'
 
-GEN = MarkovChain()
-GEN.train("../tests/moby.txt")
+GEN = MarkovChain("saves/save.txt")
 
 def start(bot, update, user_data):
     reply_text = '''Try /help and start generating cool poems.'''

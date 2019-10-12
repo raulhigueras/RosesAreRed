@@ -1,5 +1,7 @@
 import random
+import json
 from rhymer import getRhymes
+from ArrangedText import ArrangedText
 
 class MarkovChain:
     def __init__(self, savedP = None):
@@ -18,7 +20,15 @@ class MarkovChain:
 
 
     def _recoverP(self, file):
-        pass
+        with open(file, "r") as f:
+            data = json.load(f)
+            return data[0], data[1], data[2]
+
+
+    def _saveP(self, file):
+        with open(file, "w") as f:
+            json.dump([self.P1, self.P2, self.P3], f, indent=1)
+
 
     def _computeP1(self, text):
         P = self.P1
@@ -93,30 +103,25 @@ class MarkovChain:
         return w3
 
 
-    def train(self, text):
-        #text = text.split(" ")
-
-        text = open(text, "r").read().split(" ")
+    def train(self, file):
+        text = ArrangedText(file).getList();
 
         self._computeP1(text)
         self._computeP2(text)
         self._computeP3(text)
 
-        self.trained = True
+        self._saveP("saves/save.txt")
 
 
     def _getRhyme(self, w):
-        rhymes_list = getRhymes(w)
+        rhymes_list = random.shuffle(getRhymes(w))
         for word in rhymes_list:
-            if word in self.P1: #and word in self.P2["."]:
+            if word in self.P1 and word in self.P2["."]:
                 return word
 
         return "---- NULL ----"
 
     def generateText(self, n, w):
-        assert(n > 3)
-        assert(self.trained)
-
         w0 = self._getRhyme(w)
 
         w1, w2 = self._getFirstWords(w0)
