@@ -27,11 +27,12 @@ def poem(bot, update, args, user_data):
         return
     try:
         word = str(args[-1])
-        voilets = GEN.generateText(6, word)
+        violets = GEN.generateText(6, word)
         reply_text = '''
-        Roses are red,
-        %s,
-        '''
+Roses are red,
+%s,
+%s.
+        ''' % (violets, " ".join(args))
         bot.send_message(chat_id=update.message.chat_id, text=reply_text)
         update.message.reply_text(update.message.text)
     except Exception as e:
