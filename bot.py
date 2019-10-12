@@ -1,9 +1,11 @@
 import telegram
 from telegram.ext import (Updater, CommandHandler, MessageHandler, ConversationHandler)
-
+from AI MarkovChain
 
 ERROR_MESSAGE = 'Unexpected error.'
 ERROR_NO_TEXT = 'Submmit a text, pls.'
+
+GEN = MarkovChain()
 
 def start(bot, update, user_data):
     reply_text = '''Try /help and start generating cool poems.'''
@@ -24,7 +26,7 @@ def poem(bot, update, args, user_data):
         return
     try:
         word = str(args[-1])
-        reply_text = 'haha, ' + word
+        
         bot.send_message(chat_id=update.message.chat_id, text=reply_text)
     except Exception as e:
         print(e)
