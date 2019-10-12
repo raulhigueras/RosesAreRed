@@ -94,7 +94,11 @@ class MarkovChain:
     def _getNextWord(self, w2, w1, w0):
         k = list(self.P3[w0][w1][w2].keys())
         v = list(self.P3[w0][w1][w2].values())
-        w3 = random.choices(k, weights = v, k = 1)[0]
+        print(k[v.index(max(v))])
+        if (k[v.index(max(v))] == str(".")):
+            print("entro a nw")
+            w3 = str(".")
+        else: w3 = random.choices(k, weights = v, k = 1)[0]
 
         return w3
 
@@ -110,10 +114,9 @@ class MarkovChain:
 
 
     def _getRhyme(self, w):
-        rhymes_list = getRhymes(w)[0:5]
+        rhymes_list = getRhymes(w)
         random.shuffle(rhymes_list)
         for word in rhymes_list:
-            print(word)
             if word in self.P1 and word in self.P2["."].keys():
                 return word
 
@@ -124,10 +127,14 @@ class MarkovChain:
         w1 = self._getRhyme(w)
         w2 = self._getFirstWord(w1)
         sentence = [w2, w1, w0]
-
-        for i in range(n-3):
+        i = 2
+        while (sentence[0] != "." and i < 10):
             print("---", sentence[0], sentence[1], sentence[2])
             w3 = self._getNextWord(sentence[0], sentence[1], sentence[2])
             sentence.insert(0, w3)
-
+            i = i +1
+        if (sentence[0] == "."):
+            print("we have a dot")
+            sentence.pop(0)
+        sentence.pop(-1)
         return " ".join(sentence)
