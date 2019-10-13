@@ -34,7 +34,6 @@ Roses are red,
 %s.
         ''' % (violets, " ".join(args))
         bot.send_message(chat_id=update.message.chat_id, text=reply_text)
-        update.message.reply_text(update.message.text)
     except Exception as e:
         print(e)
 

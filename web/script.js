@@ -12,7 +12,7 @@ document.getElementById("btn-submit").onclick = () => {
 
   req.onreadystatechange = e => {
     p_con.innerHTML =
-      "Roses are red, <br /> " + req.responseText.substring(0, req.responseText.length-2) + ", <br /> " + p_sub.value;
+      "Roses are red, <br /> " + req.responseText + ", <br /> " + p_sub.value;
   };
 
   inn2.classList.remove("flipped");
