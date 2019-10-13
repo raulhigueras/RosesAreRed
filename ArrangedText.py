@@ -21,7 +21,7 @@ class ArrangedText:
         self.text = self.text.replace("1", "").replace("2", "").replace("3", "").replace("4", "").replace("5", "").replace("6", "").replace("7", "").replace("8", "")
         self.text = self.text.replace("9", "").replace("0", "").replace(";", "").replace("  ", " ")
         self.text = self.text.replace("chapter", "").replace(" ii","").replace(" iii","").replace(" iv ","").replace(" v ","").replace(" vi ","").replace(" vii","").replace(" viii","")
-        self.text = self.text.replace(" ix ","").replace(" x ","").replace("--","-")
+        self.text = self.text.replace(" ix ","").replace(" x ","").replace("--","-").replace('"', '').replace("“","")
         self.text = self.text.strip('"')
     def getList(self):
         return self.text.split(" ")
