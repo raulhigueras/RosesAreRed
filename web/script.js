@@ -9,6 +9,7 @@ document.getElementById("btn-submit").onclick = () => {
   var req = new XMLHttpRequest();
   req.open("GET", "http://0.0.0.0:5000/api?w=" + last_w, true);
   req.send();
+  p_con.innerHTML = "<img style='margin-top: -10px; height: 60%;' src='loader.gif' />"
 
   req.onreadystatechange = e => {
     p_con.innerHTML =

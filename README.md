@@ -51,7 +51,7 @@ Also, we wanted to develop an eye-catching interface for the web-app using Glitc
 
 We are really proud of the final project because it exceeded our expectations. Use were able to implement a Markov Chain, something that we learned a few weeks ago in Probability&Statictics class, we are also proud of making our own API (no AI libraries were needed). Our goal was to build something cool and learn new skills with it. We were able to accomplish our main goal, the Twitter bot. Also, we are very proud of our web-app interface and how we were able to build something this nice looking.
 
-### What's next for Poem bot
+### What's next for Roses Are Red bot
 
 We want to expand our project to even more platforms like Reddit. We think that our sentence generator API is easily scalable.
 
@@ -59,10 +59,11 @@ We want to expand our project to even more platforms like Reddit. We think that 
 
 This is how our project looks like unifying front-end and back-end.
 
-![Screenshot 1]()
-![Screenshot 2]()
-![Screenshot 3]()
-![Screenshot 4]()
+![Screenshot 1](images/telegram_1.png)
+![Screenshot 2](images/telegram_2.png)
+![Screenshot 3](images/web_1.png)
+![Screenshot 4](images/web_2.png)
+![Screenshot 5](images/twitter_1.png)
 
 ## Authors
 
