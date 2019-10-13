@@ -128,7 +128,7 @@ class MarkovChain:
         w2 = self._getFirstWord(w1)
         sentence = [w2, w1, w0]
         i = 2
-        while (sentence[0] != "." and i < n):
+        while ((sentence[0] != "." or i < 4) and i < n):
             print("---", sentence[0], sentence[1], sentence[2])
             w3 = self._getNextWord(sentence[0], sentence[1], sentence[2])
             sentence.insert(0, w3)
