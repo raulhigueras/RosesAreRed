@@ -55,6 +55,24 @@ We are really proud of the final project because it exceeded our expectations. U
 
 We want to expand our project to even more platforms like Reddit. We think that our sentence generator API is easily scalable.
 
+### Usage
+
+First, install all the packages listed in requirements.txt
+To run the weebhook
+```bash
+flask run
+```
+
+To run the Telegram bot
+```bash
+python3 bot.py
+```
+
+To run the Twitter bot
+```bash
+python3 twitter.py
+```
+
 ## Screenshots
 
 This is how our project looks like unifying front-end and back-end.
