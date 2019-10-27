@@ -3,5 +3,5 @@ tika==1.19
 Flask==1.0.2
 python_telegram_bot==11.1.0
 Flask_Cors==3.0.6
-requests==2.19.1
+requests==2.20.0
 telegram==0.0.1
